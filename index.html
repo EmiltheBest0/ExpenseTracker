@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expenses Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="auth-page" class="page active">
+        <form id="login-form">
+            <h2>Login</h2>
+            <input type="text" id="username" placeholder="Username" required />
+            <input type="password" id="password" placeholder="Password" required />
+            <button type="submit">Login</button>
+            <p>Don't have an account? <a href="#" id="toggle-register">Register</a></p>
+        </form>
+        <form id="register-form" style="display: none;">
+            <h2>Register</h2>
+            <input type="text" id="register-username" placeholder="Username" required />
+            <input type="password" id="register-password" placeholder="Password" required />
+            <button type="submit">Register</button>
+            <p>Already have an account? <a href="#" id="toggle-login">Login</a></p>
+        </form>
+    </div>
+    <div class="container" style="display: none;">
+        <header>
+            <h1>Expenses Tracker</h1>
+            <div id="username-display"></div>
+            <div class="language-select">
+                <img id="language-flag" src="https://flagcdn.com/w20/gb.png" alt="Language Flag">
+                <select id="language-select">
+                    <option value="en">English</option>
+                    <option value="de">Deutsch</option>
+                    <option value="it">Italiano</option>
+                </select>
+            </div>
+            <div class="currency-select">
+                <select id="currency-select">
+                    <option value="EUR">€ Euro</option>
+                    <option value="USD">$ US Dollar</option>
+                    <option value="GBP">£ British Pound</option>
+                </select>
+            </div>
+        </header>
+        <nav>
+            <a href="#add-expense-page">Add Expense</a>
+            <a href="#view-expenses-page">View Expenses</a>
+        </nav>
+        <div id="add-expense-page" class="page active">
+            <form class="expense-form">
+                <label id="description-label" for="description">Description</label>
+                <input type="text" id="description" required>
+                
+                <label id="amount-label" for="amount">Amount</label>
+                <input type="text" id="amount" pattern="^\d+([.,]\d{1,2})?$" required>
+                
+                <label id="date-label" for="date">Date</label>
+                <input type="date" id="date" required>
+                
+                <label id="notes-label" for="notes">Notes</label>
+                <textarea id="notes"></textarea>
+                
+                <label id="type-label" for="type">Type</label>
+                <div class="type-dropdown">
+                    <input type="text" id="type" required>
+                    <div class="dropdown-content"></div>
+                </div>
+                
+                <button id="add-expense-btn" type="submit">Add Expense</button>
+                <div id="success-message" style="display: none;">Expense added successfully!</div>
+            </form>
+        </div>
+        <div id="view-expenses-page" class="page">
+            <nav>
+                <span id="total-expenses" class="total-expenses"></span>
+            </nav>
+            <div class="expense-list"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
